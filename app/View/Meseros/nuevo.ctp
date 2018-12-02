@@ -6,4 +6,5 @@
  echo $this->Form->input('apellido');
  echo $this->Form->input('telefono');
  echo $this->Form->end('Crear Mesero');
+ echo $this->Html->link('Volver',array('controller'=>'meseros','action'=>'index'));
 ?>
