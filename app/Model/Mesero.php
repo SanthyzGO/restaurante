@@ -22,12 +22,12 @@ class Mesero extends AppModel
         )
     );
     public $hasMany=array(
-        'Mesa'=>array(
-            'className'=>'Mesa',
-            'foreignKey'=>'mesero_id'
-            'conditions'=>'',
-            'order'=>'Mesa.serie DESC',
-            'depend'=> false
+            'Mesa'=>array(
+                'className'=>'Mesa',
+                'foreignKey'=>'mesero_id',
+                'conditions'=>'',
+                'order'=>'Mesa.serie DESC',
+                'depend'=> false
         )
     );
 
