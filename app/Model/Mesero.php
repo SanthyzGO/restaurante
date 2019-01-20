@@ -3,7 +3,7 @@ class Mesero extends AppModel
 {
     public $validate = array(
         'doc'=>array(
-            'notBlank'=>array('rule'=>'notBlank',),
+            'notBlank'=>array('rule'=>'notBlank'),
             'numeric'=>array('rule'=>'numeric','message'=>'Solo Números'),
             'unique'=>array(
                 'rule'=>'isUnique',
@@ -19,6 +19,15 @@ class Mesero extends AppModel
         'telefono'=>array(
             'notBlank'=>array('rule'=>'notBlank'),
             'numeric'=>array('rule'=>'numeric','message'=>'Solo Números')
+        )
+    );
+    public $hasMany=array(
+        'Mesa'=>array(
+            'className'=>'Mesa',
+            'foreignKey'=>'mesero_id'
+            'conditions'=>'',
+            'order'=>'Mesa.serie DESC',
+            'depend'=> false
         )
     );
 
