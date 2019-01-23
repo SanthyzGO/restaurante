@@ -35,29 +35,41 @@ class MeserosController extends AppController
     }
     public function editar($id=null)
     {
-        if (!$id) 
+        if (!$id)
         {
             throw new NotFoundException('Datos invalidos');
         }
         $mesero=$this->Mesero->findById($id);
-        if (!$mesero) 
+        if (!$mesero)
         {
             throw new NotFoundException('No existe el mesero');
         }
         if ($this->request->is('post','put'))
         {
             $this->Mesero->id=$id;
-            if ($this->Mesero->save($this->request->data)) 
+            if ($this->Mesero->save($this->request->data))
             {
                 $this->Session->setFlash('Los datos se han cambiado',$element='default',$params= array('class' =>'success'));
                 return $this->redirect((array('action'=>'index')));
             }
             $this->Session->setFlash('El registro no pudo ser modificado.');
         }
-        if (!$this->request->data) 
+        if (!$this->request->data)
         {
             $this->request->data=$mesero;
         }
+    }
+    public function eliminar($id)
+    {
+      if ($this->request->is('get'))
+      {
+        throw new NotFoundException('No se puede eliminar');
+      }
+      if ($this->Mesero->delete($id))
+      {
+        $this->Session->setFlash('el registro ha sido eliminado',$element='default',$params=array('class'=>'success'));
+      return $this->redirect(array('action'=>'index'));
+      }
     }
 }
 ?>

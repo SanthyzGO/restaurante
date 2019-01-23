@@ -21,6 +21,15 @@ class Mesero extends AppModel
             'numeric'=>array('rule'=>'numeric','message'=>'Solo Números')
         )
     );
+    public $hasMany=array(
+           'Mesa'=>array(
+               'className'=>'Mesa',
+               'foreignKey'=>'mesero_id',
+               'conditions'=>'',
+               'order'=>'Mesa.serie DESC',
+               'depend'=> false
+       )
+   );
 
 }
 ?>
