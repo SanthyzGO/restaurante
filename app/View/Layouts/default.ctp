@@ -28,7 +28,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	<?php
 		echo $this->Html->meta('icon');
 
-		echo $this->Html->css('cake.generic');
+		echo $this->Html->css(array('style.css','bootstrap.min','bootstrap-theme.min'));
+		echo $this->Html->script(array('jquery.min','docs.min','bootstrap.min'));;
 
 		echo $this->fetch('meta');
 		echo $this->fetch('css');
@@ -36,16 +37,20 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 	?>
 </head>
 <body>
-	<div id="container">
-		<div id="header">
-			<h1><?php echo $this->Html->link($cakeDescription, 'https://cakephp.org'); ?></h1>
-		</div>
-		<div id="content">
+  <?php  echo $this->element('menu');?>
 
-			<?php echo $this->Flash->render(); ?>
+			<div class="container theme-showcase" role="main">
 
-			<?php echo $this->fetch('content'); ?>
-		</div>
+
+						<?php echo $this->Flash->render(); ?>
+
+						<?php echo $this->fetch('content'); ?>
+
+			</div>
+
+
+
+
 		<div id="footer">
 			<?php echo $this->Html->link(
 					$this->Html->image('cake.power.gif', array('alt' => $cakeDescription, 'border' => '0')),
@@ -55,9 +60,8 @@ $cakeVersion = __d('cake_dev', 'CakePHP %s', Configure::version())
 			?>
 			<p>
 				<?php echo $cakeVersion; ?>
+				<?php echo $this->element('sql_dump'); ?>
 			</p>
 		</div>
-	</div>
-	<?php echo $this->element('sql_dump'); ?>
 </body>
 </html>
